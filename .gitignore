@@ -1,6 +1,15 @@
 # Build output and local screenshots
 target/
 shots/
+
 # Craft Anything working notes about the original program (not part of the project)
 MECHANICS.md
 mechanics.json
+agent-session.jsonl
+build-activity.log
+capture/
+craft.json
+feed.json
+inbox/
+investigation.cany/
+usage.json
