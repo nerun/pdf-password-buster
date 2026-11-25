@@ -2,8 +2,13 @@
 # as downloadable artifacts of each run.
 name: build
 
+# Only branch pushes run the build. Listing branches (and no tags) means
+# pushing a tag, which also happens when a GitHub release is published, does
+# not start the workflow.
 on:
   push:
+    branches:
+      - '**'
   pull_request:
   workflow_dispatch:
 
