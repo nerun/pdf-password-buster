@@ -1,0 +1,47 @@
+# Builds PDF Password Buster on Linux, Windows and macOS and keeps the binaries
+# as downloadable artifacts of each run.
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact: pdf-password-buster-linux-x86_64
+            binary: target/release/pdf-password-buster
+          - os: windows-latest
+            artifact: pdf-password-buster-windows-x86_64
+            binary: target/release/pdf-password-buster.exe
+          - os: macos-latest
+            artifact: pdf-password-buster-macos-arm64
+            binary: target/release/pdf-password-buster
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libxkbcommon-dev libwayland-dev
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        run: cargo build --release --locked
+
+      - name: Command line smoke test
+        shell: bash
+        run: ${{ matrix.binary }} -h
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.binary }}

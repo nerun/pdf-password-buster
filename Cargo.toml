@@ -1,0 +1,43 @@
+[package]
+name = "pdf-password-buster"
+version = "1.0.0"
+authors = ["Daniel Dias Rodrigues"]
+license = "MIT"
+description = "Removes passwords and restrictions from PDF files."
+edition = "2024"
+
+[dependencies]
+aes = "0.8"
+eframe = "0.37.0"
+egui_extras = "0.37.0"
+lopdf = "0.47.0"
+png = "0.17"
+rfd = { version = "0.18", default-features = false, features = ["gtk3"] }
+sha2 = "0.10"
+
+[build-dependencies]
+winresource = "0.1.34"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_System_Console"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+winit = { version = "0.30", default-features = false }
+
+# macOS app bundle (cargo install cargo-bundle && cargo bundle --release)
+[package.metadata.bundle]
+name = "PDF Password Buster"
+identifier = "org.pdfpasswordbuster.app"
+icon = [
+    "assets/icons/pdf-password-buster-32.png",
+    "assets/icons/pdf-password-buster-64.png",
+    "assets/icons/pdf-password-buster-128.png",
+    "assets/icons/pdf-password-buster-256.png",
+]
+version = "1.0.0"
+copyright = "Copyright 2026 Daniel Dias Rodrigues"
+category = "public.app-category.utilities"
+short_description = "Removes passwords and restrictions from PDF files."
+
+[profile.release]
+strip = true
