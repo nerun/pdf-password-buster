@@ -10,6 +10,8 @@ A free and open-source desktop application, written in Rust, that removes passwo
 restrictions from PDF files. It runs natively on **Linux, Windows and macOS** and needs no
 registration, serial number or activation key.
 
+<img src="assets/buster-screen.png" alt="PDF Password Buster screen" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+
 ## What it does
 
 - **Removes restrictions** (printing, copying text, editing, annotations) from PDFs that open
