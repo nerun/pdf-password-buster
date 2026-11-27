@@ -1,4 +1,10 @@
-# PDF Password Buster
+<h1 align="center">PDF Password Buster</h1>
+
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-b70228?style=flat-square">
+  <img alt="Written in Rust" src="https://img.shields.io/badge/written%20in-Rust-8a011e?style=flat-square">
+  <img alt="Platforms: macOS, Windows, Linux" src="https://img.shields.io/badge/runs%20on-macOS%20%C2%B7%20Windows%20%C2%B7%20Linux-b70228?style=flat-square">
+</p>
 
 A free and open-source desktop application, written in Rust, that removes passwords and
 restrictions from PDF files. It runs natively on **Linux, Windows and macOS** and needs no
