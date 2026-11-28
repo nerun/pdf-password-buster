@@ -120,6 +120,11 @@ Optional, to add it to the applications menu with its icon:
 ```bash
 install -Dm755 target/release/pdf-password-buster ~/.local/bin/pdf-password-buster
 install -Dm644 assets/pdf-password-buster.desktop ~/.local/share/applications/pdf-password-buster.desktop
+
+# Point Exec to the absolute path of the installed binary
+sed -i "s|^Exec=pdf|Exec=$HOME/.local/bin/pdf|" \
+  ~/.local/share/applications/pdf-password-buster.desktop
+
 for s in 32 48 64 128 256; do
   install -Dm644 assets/icons/pdf-password-buster-$s.png \
     ~/.local/share/icons/hicolor/${s}x${s}/apps/pdf-password-buster.png
